@@ -12,8 +12,9 @@ type Cbit struct {
 }
 
 type Qubit struct {
-	alpha float64 // superposition coefficent of |0>
-	beta  float64 // superposition coefficent of |1>
+	initialState Cbit
+	alpha        float64 // superposition coefficent of |0>
+	beta         float64 // superposition coefficent of |1>
 }
 
 func NewQubit(alpha, beta float64) (*Qubit, error) {
@@ -21,8 +22,9 @@ func NewQubit(alpha, beta float64) (*Qubit, error) {
 		return nil, errors.New("coefficients error")
 	}
 	return &Qubit{
-		alpha: alpha,
-		beta:  beta,
+		initialState: Cbit{bit: 0},
+		alpha:        alpha,
+		beta:         beta,
 	}, nil
 }
 
